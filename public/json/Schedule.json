@@ -1,0 +1,11 @@
+{
+  "appointments": [
+    {
+      "firstName": "Bernardo",
+      "lastName": "Santos",
+      "specialty": "Cardiology",
+      "date": "2001-11-22T21:45",
+      "id": 1
+    }
+  ]
+}
