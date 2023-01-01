@@ -1,8 +1,8 @@
-import React from "react";
+// import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import "./App.css";
-import Home from "./components/pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./components/pages/Home";
 import Schedule from "./components/pages/Schedule";
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/" exact component={Home} />
           <Route path="/schedule" component={Schedule} />
+          <Route path="/" component={Home} />
         </Switch>
       </Router>
     </>

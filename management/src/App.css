@@ -67,3 +67,25 @@
   font-size: 0.8em;
   font-weight: 500;
 }
+
+a {
+  text-decoration: none;
+}
+
+.text {
+  margin-left: 15px;
+}
+
+.space-right {
+  margin-right: 15px;
+}
+
+.space-bottom {
+  margin-bottom: 10px;
+}
+
+.form-flex {
+  display: grid;
+  grid-template-columns: 20% 40%;
+  row-gap: 10px;
+}

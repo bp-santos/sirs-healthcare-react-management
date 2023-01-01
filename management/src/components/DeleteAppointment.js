@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css";
 
 function DeleteAppointment(props) {
   const modalIdentifier = "delete" + props.elementId;
@@ -31,53 +32,16 @@ function DeleteAppointment(props) {
                 <span>&times;</span>
               </button>
             </div>
-            <div className="modal-body">
-              First Name:
-              <input
-                type="text"
-                name="firstName"
-                value={props.singledata.firstName}
-                onChange={props.handleChange}
-              />
-              <br></br>
-              Last Name:
-              <input
-                type="text"
-                name="lastName"
-                value={props.singledata.lastName}
-                onChange={props.handleChange}
-              />
-              <br></br>
-              Specialty:
-              <select
-                type="text"
-                name="specialty"
-                value={props.singledata.specialty}
-                onChange={props.handleChange}
-              >
-                <option value="Orthopedy" selected>
-                  Orthopedy
-                </option>
-                <option value="Cardiology">Cardiology</option>
-                <option value="Dermatology">Dermatology</option>
-              </select>
-              <br></br>
-              Date:
-              <input
-                type="datetime-local"
-                placeholder="date"
-                name="date"
-                value={props.singledata.date}
-                onChange={props.handleChange}
-              />
-            </div>
+            <br></br>
+            <div className="text">Are you sure you want to proceed?</div>
+            <br></br>
             <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary"
                 data-dismiss="modal"
               >
-                Close
+                Cancel
               </button>
               <button
                 type="button"

@@ -5,7 +5,7 @@ class SignInForm extends Component {
     super();
 
     this.state = {
-      email: "",
+      username: "",
       password: "",
     };
 
@@ -16,10 +16,10 @@ class SignInForm extends Component {
   handleChange(event) {
     let target = event.target;
     let value = target.type === "checkbox" ? target.checked : target.value;
-    let name = target.name;
+    let username = target.username;
 
     this.setState({
-      [name]: value,
+      [username]: value,
     });
   }
 
@@ -35,16 +35,16 @@ class SignInForm extends Component {
       <div className="formCenter">
         <form className="formFields" onSubmit={this.handleSubmit}>
           <div className="formField">
-            <label className="formFieldLabel" htmlFor="email">
-              E-Mail Address
+            <label className="formFieldLabel" htmlFor="username">
+              USERNAME
             </label>
             <input
-              type="email"
-              id="email"
+              type="username"
+              id="username"
               className="formFieldInput"
-              placeholder="Enter your email"
-              name="email"
-              value={this.state.email}
+              placeholder="Enter your username"
+              name="username"
+              value={this.state.username}
               onChange={this.handleChange}
             />
           </div>
@@ -65,7 +65,9 @@ class SignInForm extends Component {
           </div>
 
           <div className="formField">
-            <button className="formFieldButton">Sign In</button>
+            <a className="formFieldButton" href="/schedule">
+              Sign In
+            </a>
           </div>
         </form>
       </div>

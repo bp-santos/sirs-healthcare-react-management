@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "./Button";
-import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
@@ -23,42 +22,47 @@ function Navbar() {
   }, []);
 
   window.addEventListener("resize", showButton);
+  var port = window.location.port;
 
   return (
     <>
       <nav className="navbars">
         <div className="navbars-container">
-          <Link to="/" className="navbars-logo" onClick={closeMobileMenu}>
+          <a
+            href="http://localhost:3000"
+            className="navbars-logo"
+            onClick={closeMobileMenu}
+          >
             Saint Acutis Hospital
-          </Link>
+          </a>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <Link
-                to="/schedule"
+              <a
+                href="/schedule"
                 className="nav-links"
                 onClick={closeMobileMenu}
               >
                 Schedule
-              </Link>
+              </a>
             </li>
-            <li>
-              <Link
-                to="/"
+            <li className="nav-item">
+              <a
+                href="/"
                 className="nav-links-mobile"
                 onClick={closeMobileMenu}
               >
                 Sign In
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link className="nav-links" to="/">
+              <a className="nav-links" href="/">
                 {button && (
                   <Button buttonStyle="button--outline">SIGN IN</Button>
                 )}
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

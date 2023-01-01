@@ -8,6 +8,7 @@ function CreateAppointment(props) {
         className="btn btn-info"
         data-toggle="modal"
         data-target="#myModal"
+        onClick={props.getAppointments}
       >
         Create new appointment
       </button>
@@ -28,43 +29,45 @@ function CreateAppointment(props) {
                 <span>&times;</span>
               </button>
             </div>
-            <div className="modal-body">
-              First Name:
+            <div className="modal-body form-flex">
+              Title:
+              <input type="text" name="title" onChange={props.handleChange} />
+              Date:
+              <input type="date" name="date" onChange={props.handleChange} />
+              Time:
+              <input type="time" name="time" onChange={props.handleChange} />
+              Patient:
               <input
-                type="text"
-                name="firstName"
-                value={props.singledata.firstName}
+                type="number"
+                name="patient_id"
                 onChange={props.handleChange}
               />
-              <br />
-              Last Name:
-              <input
-                type="text"
-                name="lastName"
-                value={props.singledata.lastName}
-                onChange={props.handleChange}
-              />
-              <br />
-              Specialty:
+              Doctor:
               <select
-                type="text"
-                name="specialty"
-                value={props.singledata.specialty}
+                type="number"
+                name="doctor_id"
                 onChange={props.handleChange}
               >
-                <option value="Orthopedy">Orthopedy</option>
-                <option value="Cardiology">Cardiology</option>
-                <option value="Dermatology">Dermatology</option>
+                <option hidden value="">
+                  Select one below
+                </option>
+                {props.doctors.map((doctor) => (
+                  <option value={doctor.id}>{doctor.name}</option>
+                ))}
               </select>
-              <br />
-              Date:
-              <input
-                type="datetime-local"
-                placeholder="date"
-                name="date"
-                value={props.singledata.date}
+              Specialty:
+              <select
+                type="number"
+                name="specialty_id"
                 onChange={props.handleChange}
-              />
+              >
+                <option hidden value="">
+                  Select one below
+                </option>
+                <option value="1">Orthopedy</option>
+                <option value="2">Cardiology</option>
+                <option value="3">Dermatology</option>
+              </select>
             </div>
             <div className="modal-footer">
               <button
