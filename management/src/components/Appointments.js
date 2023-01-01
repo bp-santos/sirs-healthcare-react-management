@@ -40,6 +40,7 @@ function Appointments(props) {
             elementId={element.id}
             singledata={props.singledata}
             doctors={props.doctors}
+            patients={props.patients}
             getAppointment={props.getAppointment}
             updateAppointment={props.updateAppointment}
             handleChange={props.handleChange}

@@ -28,11 +28,7 @@ function Navbar() {
     <>
       <nav className="navbars">
         <div className="navbars-container">
-          <a
-            href="http://localhost:3000"
-            className="navbars-logo"
-            onClick={closeMobileMenu}
-          >
+          <a className="navbars-logo" href="/" onClick={closeMobileMenu}>
             Saint Acutis Hospital
           </a>
           <div className="menu-icon" onClick={handleClick}>

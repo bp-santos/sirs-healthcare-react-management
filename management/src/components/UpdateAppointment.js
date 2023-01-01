@@ -75,6 +75,23 @@ function UpdateAppointment(props) {
                 <option value="0">Not confirmed</option>
                 <option value="1">Confirmed</option>
               </select>
+              Patient:
+              <select
+                type="number"
+                name="patient_id"
+                disabled
+                onChange={props.handleChange}
+                value={props.singledata.patient_id}
+              >
+                <option hidden value="">
+                  Select one below
+                </option>
+                {props.patients.map((patient) => (
+                  <option value={patient.id}>
+                    {patient.name} ({patient.username})
+                  </option>
+                ))}
+              </select>
               Doctor:
               <select
                 type="number"

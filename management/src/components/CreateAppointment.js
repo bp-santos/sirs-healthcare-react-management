@@ -37,11 +37,20 @@ function CreateAppointment(props) {
               Time:
               <input type="time" name="time" onChange={props.handleChange} />
               Patient:
-              <input
+              <select
                 type="number"
                 name="patient_id"
                 onChange={props.handleChange}
-              />
+              >
+                <option hidden value="">
+                  Select one below
+                </option>
+                {props.patients.map((patient) => (
+                  <option value={patient.id}>
+                    {patient.name} ({patient.username})
+                  </option>
+                ))}
+              </select>
               Doctor:
               <select
                 type="number"

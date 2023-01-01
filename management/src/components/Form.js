@@ -124,6 +124,8 @@ class Form extends React.Component {
         },
       })
     );
+
+    this.getAppointments();
   }
 
   getAppointment(event, id) {
@@ -223,6 +225,7 @@ class Form extends React.Component {
           <CreateAppointment
             getAppointments={this.getAppointments}
             doctors={this.state.doctors}
+            patients={this.state.patients}
             createAppointment={this.createAppointment}
             handleChange={this.handleChange}
           />
