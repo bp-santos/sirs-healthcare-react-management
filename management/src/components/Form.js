@@ -32,7 +32,12 @@ class Form extends React.Component {
 
   getAppointments() {
     this.setState({ loading: true }, () => {
-      fetch("http://localhost:5000/appointments")
+      fetch(
+        "http://"
+          .concat(window.location.hostname)
+          .concat(":5000")
+          .concat("/appointments")
+      )
         .then((res) => res.json())
         .then((result) => {
           this.setState({
@@ -43,7 +48,12 @@ class Form extends React.Component {
         .catch(console.log);
     });
     this.setState({ loading: true }, () => {
-      fetch("http://localhost:5000/doctors")
+      fetch(
+        "http://"
+          .concat(window.location.hostname)
+          .concat(":5000")
+          .concat("/doctors")
+      )
         .then((res) => res.json())
         .then((result) => {
           this.setState({
@@ -54,7 +64,12 @@ class Form extends React.Component {
         .catch(console.log);
     });
     this.setState({ loading: true }, () => {
-      fetch("http://localhost:5000/patients")
+      fetch(
+        "http://"
+          .concat(window.location.hostname)
+          .concat(":5000")
+          .concat("/patients")
+      )
         .then((res) => res.json())
         .then((result) => {
           this.setState({
@@ -104,13 +119,19 @@ class Form extends React.Component {
     console.warn("The form was submitted with the following data:");
     console.warn(this.state);
 
-    fetch("http://localhost:5000/appointments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(this.state.singledata),
-    }).then(
+    fetch(
+      "http://"
+        .concat(window.location.hostname)
+        .concat(":5000")
+        .concat("/appointments"),
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.state.singledata),
+      }
+    ).then(
       this.setState({
         singledata: {
           title: "",
@@ -128,7 +149,12 @@ class Form extends React.Component {
 
   getAppointment(event, id) {
     this.setState(() => {
-      fetch("http://localhost:5000/appointments/" + id)
+      fetch(
+        "http://"
+          .concat(window.location.hostname)
+          .concat(":5000")
+          .concat("/appointments/") + id
+      )
         .then((res) => res.json())
         .then((result) => {
           // console.log(result);
@@ -149,13 +175,19 @@ class Form extends React.Component {
   }
 
   updateAppointment(event, id) {
-    fetch("http://localhost:5000/appointments/" + id, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(this.state.singledata),
-    })
+    fetch(
+      "http://"
+        .concat(window.location.hostname)
+        .concat(":5000")
+        .concat("/appointments/") + id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.state.singledata),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         this.setState({
@@ -175,9 +207,15 @@ class Form extends React.Component {
   }
 
   deleteAppointment(event, id) {
-    fetch("http://localhost:5000/appointments/" + id, {
-      method: "DELETE",
-    })
+    fetch(
+      "http://"
+        .concat(window.location.hostname)
+        .concat(":5000")
+        .concat("/appointments/") + id,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then(() => {
         this.setState({

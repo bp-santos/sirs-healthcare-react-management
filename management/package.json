@@ -6,7 +6,7 @@
       "localhost",
       ".localhost"
     ],
-    "proxy": "https://localhost:5000/"
+    "proxy": "https://172.16.0.194:5000/"
   },
   "private": true,
   "dependencies": {
@@ -20,7 +20,7 @@
     "web-vitals": "^3.1.0"
   },
   "scripts": {
-    "start": "set PORT=3002 && react-scripts start",
+    "start": "PORT=3002 react-scripts start",
     "build": "react-scripts build 3002",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

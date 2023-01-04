@@ -9,9 +9,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const connection = mysql.createConnection({
-  host: "127.0.0.1",
+  host: "172.16.0.194",
   user: "root",
-  password: "password",
+  password: "root",
   database: "saint_acutis_database",
 });
 
