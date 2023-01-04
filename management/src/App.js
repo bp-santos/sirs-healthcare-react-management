@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
@@ -24,7 +24,7 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <Route path="/" component={Form} />
+        <Form />
       </Router>
     </>
   );
