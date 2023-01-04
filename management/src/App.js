@@ -1,19 +1,30 @@
-// import React, { useEffect, useState } from "react";
-import Navbar from "./components/Navbar";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/pages/Home";
-import Schedule from "./components/pages/Schedule";
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import useToken from "./components/UseToken";
+import Form from "./components/Form";
 
 function App() {
+  const { token, setToken } = useToken();
+
+  if (!token) {
+    return (
+      <>
+        <Router>
+          <Navbar />
+          <Login setToken={setToken} />
+        </Router>
+      </>
+    );
+  }
+
   return (
     <>
       <Router>
         <Navbar />
-        <Switch>
-          <Route path="/schedule" component={Schedule} />
-          <Route path="/" component={Home} />
-        </Switch>
+        <Route path="/" component={Form} />
       </Router>
     </>
   );

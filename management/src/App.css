@@ -6,7 +6,7 @@
 }
 
 .App {
-  height: calc(100vh - 80px);
+  height: 100vh;
   display: flex;
   color: white;
 }
@@ -22,7 +22,7 @@
 .appForm {
   width: 50%;
   background-color: #282827;
-  padding: 80px 40px;
+  padding: 25px 40px;
   overflow: auto;
 }
 
@@ -78,6 +78,10 @@ a {
 
 .space-right {
   margin-right: 15px;
+}
+
+.space-left {
+  margin-left: 15px;
 }
 
 .space-bottom {

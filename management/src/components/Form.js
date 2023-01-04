@@ -124,8 +124,6 @@ class Form extends React.Component {
         },
       })
     );
-
-    this.getAppointments();
   }
 
   getAppointment(event, id) {
@@ -133,7 +131,7 @@ class Form extends React.Component {
       fetch("http://localhost:5000/appointments/" + id)
         .then((res) => res.json())
         .then((result) => {
-          console.log(result);
+          // console.log(result);
           this.setState({
             singledata: {
               title: result[0].title,
@@ -198,6 +196,11 @@ class Form extends React.Component {
       });
   }
 
+  logOut() {
+    sessionStorage.removeItem("token");
+    window.location.reload(false);
+  }
+
   render() {
     const AppointmentAppointments = (
       <Appointments
@@ -229,6 +232,13 @@ class Form extends React.Component {
             createAppointment={this.createAppointment}
             handleChange={this.handleChange}
           />
+          <button
+            type="button"
+            className="btn btn-info space-left"
+            onClick={this.logOut}
+          >
+            Log-out
+          </button>
         </span>
         <br></br>
         <div className="space-bottom"></div>

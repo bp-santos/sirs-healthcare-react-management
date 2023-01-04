@@ -6,6 +6,7 @@ function Appointments(props) {
   var rows = [];
   var confirmed = "";
   var specialty = "";
+  var description = "";
   props.alldata.forEach((element) => {
     if (element.is_confirmed === 0) confirmed = "Not confirmed";
     if (element.is_confirmed === 1) confirmed = "Confirmed";
@@ -13,6 +14,9 @@ function Appointments(props) {
     if (element.specialty_id === 1) specialty = "Orthopedy";
     if (element.specialty_id === 2) specialty = "Cardiology";
     if (element.specialty_id === 3) specialty = "Dermatology";
+
+    if (element.description === "") description = "None";
+    else description = element.description;
 
     props.doctors.forEach((doctor) => {
       if (element.doctor_id === doctor.id) {
@@ -29,6 +33,7 @@ function Appointments(props) {
     rows.push(
       <tr key={element.id}>
         <td>{element.title}</td>
+        <td>{description}</td>
         <td>{element.date.slice(0, 10)}</td>
         <td>{element.time}</td>
         <td>{confirmed}</td>
@@ -63,6 +68,7 @@ function Appointments(props) {
       <thead>
         <tr>
           <th>Title</th>
+          <th>Description</th>
           <th>Date</th>
           <th>Time</th>
           <th>Status</th>

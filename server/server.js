@@ -1,9 +1,8 @@
 const express = require("express");
 const mysql = require("mysql");
-
+const cors = require("cors");
 const app = express();
 
-const cors = require("cors");
 app.use(cors({ origin: true }));
 
 app.use(express.json());
@@ -22,6 +21,73 @@ connection.connect((error) => {
   } else {
     console.log("Connected to database");
   }
+});
+
+let id;
+
+const setOutput = (rows) => {
+  id = rows.id;
+  console.log(id);
+};
+
+app.post("/login", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  connection.query(
+    "SELECT id FROM patient WHERE username = ?",
+    [username],
+    (error, result) => {
+      if (error) {
+        res.send(error);
+      } else {
+        if (result[0]) setOutput(result[0]);
+      }
+    }
+  );
+
+  connection.query(
+    "CALL check_patient_password (?,?)",
+    [username, password],
+    (error, result) => {
+      if (error) {
+        res.send(error);
+      } else {
+        if (result[0][0].UserExists == "1") res.send({ token: id });
+        else res.send(result);
+      }
+    }
+  );
+});
+
+app.post("/login-management", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  connection.query(
+    "SELECT id FROM management WHERE username = ?",
+    [username],
+    (error, result) => {
+      if (error) {
+        res.send(error);
+      } else {
+        if (result[0]) setOutput(result[0]);
+      }
+    }
+  );
+
+  connection.query(
+    "CALL check_management_password (?,?)",
+    [username, password],
+    (error, result) => {
+      if (error) {
+        res.send(error);
+      } else {
+        if (result[0][0].UserExists == "1") res.send({ token: id });
+        else res.send(result);
+      }
+    }
+  );
 });
 
 // Get list of appointments

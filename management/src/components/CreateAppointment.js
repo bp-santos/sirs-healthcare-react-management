@@ -32,6 +32,12 @@ function CreateAppointment(props) {
             <div className="modal-body form-flex">
               Title:
               <input type="text" name="title" onChange={props.handleChange} />
+              Description:
+              <input
+                type="text"
+                name="description"
+                onChange={props.handleChange}
+              />
               Date:
               <input type="date" name="date" onChange={props.handleChange} />
               Time:
