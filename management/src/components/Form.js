@@ -131,19 +131,6 @@ class Form extends React.Component {
         },
         body: JSON.stringify(this.state.singledata),
       }
-    ).then(
-      this.setState({
-        singledata: {
-          title: "",
-          description: "",
-          date: "",
-          time: "",
-          is_confirmed: "",
-          patient_id: "",
-          doctor_id: "",
-          specialty_id: "",
-        },
-      })
     );
   }
 
@@ -202,7 +189,7 @@ class Form extends React.Component {
             specialty_id: "",
           },
         });
-        this.getAppointments();
+        window.location.reload(false);
       });
   }
 
@@ -230,7 +217,7 @@ class Form extends React.Component {
             specialty_id: "",
           },
         });
-        this.getAppointments();
+        window.location.reload(false);
       });
   }
 

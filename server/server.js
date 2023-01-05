@@ -24,10 +24,16 @@ connection.connect((error) => {
 });
 
 let id;
+let salt;
 
 const setOutput = (rows) => {
   id = rows.id;
   console.log(id);
+};
+
+const setSalt = (rows) => {
+  console.log(rows);
+  salt = rows.salt;
 };
 
 app.post("/login", (req, res) => {
@@ -47,8 +53,20 @@ app.post("/login", (req, res) => {
   );
 
   connection.query(
-    "CALL check_patient_password (?,?)",
-    [username, password],
+    "SELECT salt FROM patient WHERE username = ?",
+    [username],
+    (error, result) => {
+      if (error) {
+        res.send(error);
+      } else {
+        if (result[0]) setSalt(result[0]);
+      }
+    }
+  );
+
+  connection.query(
+    "CALL check_patient_password (?,?,?)",
+    [username, password, salt],
     (error, result) => {
       if (error) {
         res.send(error);
@@ -65,7 +83,7 @@ app.post("/login-management", (req, res) => {
   const password = req.body.password;
 
   connection.query(
-    "SELECT id FROM management WHERE username = ?",
+    "SELECT id FROM doctor WHERE username = ?",
     [username],
     (error, result) => {
       if (error) {
@@ -77,8 +95,20 @@ app.post("/login-management", (req, res) => {
   );
 
   connection.query(
-    "CALL check_management_password (?,?)",
-    [username, password],
+    "SELECT salt FROM doctor WHERE username = ?",
+    [username],
+    (error, result) => {
+      if (error) {
+        res.send(error);
+      } else {
+        if (result[0]) setSalt(result[0]);
+      }
+    }
+  );
+
+  connection.query(
+    "CALL check_doctor_password (?,?,?)",
+    [username, password, salt],
     (error, result) => {
       if (error) {
         res.send(error);
