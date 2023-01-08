@@ -1,0 +1,19 @@
+.navbars {
+  background: linear-gradient(90deg, #58c4dc 0%, #3bc3e2 100%);
+  height: 80px;
+  display: flex;
+  font-size: 1.2rem;
+  top: 0;
+  z-index: 999;
+}
+
+.navbars-logo {
+  color: #fff;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
